@@ -1,0 +1,233 @@
+What is the most important feature of Java?
+Java is a platform independent language.
+What do you mean by platform independence?
+Platform independence means that we can write and compile the java code in one platform (eg Windows) and can execute the class in any other supported platform eg (Linux,Solaris,etc).
+What is a JVM?
+JVM is Java Virtual Machine which is a run time environment for the compiled java class files.
+Are JVM's platform independent?
+JVM's are not platform independent. JVM's are platform specific run time implementation provided by the vendor.
+What is the difference between a JDK and a JVM?
+JDK is Java Development Kit which is for development purpose and it includes execution environment also. But JVM is purely a run time environment and hence you will not be able to compile your source files using a JVM.
+What is a pointer and does Java support pointers?
+Pointer is a reference handle to a memory location. Improper handling of pointers leads to memory leaks and reliability issues hence Java doesn't support the usage of pointers.
+What is the base class of all classes?
+java.lang.Object
+Does Java support multiple inheritance?
+Java doesn't support multiple inheritance.
+Is Java a pure object oriented language?
+Java uses primitive data types and hence is not a pure object oriented language.
+Are arrays primitive data types?
+In Java, Arrays are objects.
+What is difference between Path and Classpath?
+Path and Classpath are operating system level environment variales. Path is used define where the system can find the executables(.exe) files and classpath is used to specify the location .class files.
+What are local variables?
+Local varaiables are those which are declared within a block of code like methods. Local variables should be initialised before accessing them.
+What are instance variables?
+Instance variables are those which are defined at the class level. Instance variables need not be initialized before using them as they are automatically initialized to their default values.
+How to define a constant variable in Java?
+The variable should be declared as static and final. So only one copy of the variable exists for all instances of the class and the value can't be changed also.
+
+static final int MAX_LENGTH = 50; is an example for constant.
+Should a main() method be compulsorily declared in all java classes?
+No not required. main() method should be defined only if the source class is a java application.
+What is the return type of the main() method?
+Main() method doesn't return anything hence declared void.
+Why is the main() method declared static?
+main() method is called by the JVM even before the instantiation of the class hence it is declared as static.
+What is the arguement of main() method?
+main() method accepts an array of String object as arguement.
+Can a main() method be overloaded?
+Yes. You can have any number of main() methods with different method signature and implementation in the class.
+Can a main() method be declared final?
+Yes. Any inheriting class will not be able to have it's own default main() method.
+Does the order of public and static declaration matter in main() method?
+No. It doesn't matter but void should always come before main().
+Can a source file contain more than one class declaration?
+Yes a single source file can contain any number of Class declarations but only one of the class can be declared as public.
+What is a package?
+Package is a collection of related classes and interfaces. package declaration should be first statement in a java class.
+Which package is imported by default?
+java.lang package is imported by default even without a package declaration.
+Can a class declared as private be accessed outside it's package?
+Not possible.
+Can a class be declared as protected?
+The protected access modifier cannot be applied to class and interfaces. Methods, fields can be declared protected, however methods and fields in a interface cannot be declared protected.
+What is the access scope of a protected method?
+A protected method can be accessed by the classes within the same package or by the subclasses of the class in any package.
+What is the purpose of declaring a variable as final?
+A final variable's value can't be changed. final variables should be initialized before using them.
+What is the impact of declaring a method as final?
+A method declared as final can't be overridden. A sub-class can't have the same method signature with a different implementation.
+I don't want my class to be inherited by any other class. What should i do?
+You should declared your class as final. But you can't define your class as final, if it is an abstract class. A class declared as final can't be extended by any other class.
+Can you give few examples of final classes defined in Java API?
+java.lang.String, java.lang.Math are final classes.
+How is final different from finally and finalize()?
+final is a modifier which can be applied to a class or a method or a variable. final class can't be inherited, final method can't be overridden and final variable can't be changed. 
+
+finally is an exception handling code section which gets executed whether an exception is raised or not by the try block code segment. 
+
+finalize() is a method of Object class which will be executed by the JVM just before garbage collecting object to give a final chance for resource releasing activity.
+Can a class be declared as static?
+We can not declare top level class as static, but only inner class can be declared static.
+public class Test
+{ 
+    static class InnerClass
+    {
+        public static void InnerMethod()
+        { System.out.println("Static Inner Class!"); }
+    } 
+    public static void main(String args[])
+    {
+       Test.InnerClass.InnerMethod();
+    }
+}
+//output: Static Inner Class!
+When will you define a method as static?
+When a method needs to be accessed even before the creation of the object of the class then we should declare the method as static.
+What are the restriction imposed on a static method or a static block of code?
+A static method should not refer to instance variables without creating an instance and cannot use "this" operator to refer the instance.
+I want to print "Hello" even before main() is executed. How will you acheive that?
+Print the statement inside a static block of code. Static blocks get executed when the class gets loaded into the memory and even before the creation of an object. Hence it will be executed before the main() method. And it will be executed only once.
+What is the importance of static variable?
+static variables are class level variables where all objects of the class refer to the same variable. If one object changes the value then the change gets reflected in all the objects.
+Can we declare a static variable inside a method?
+Static varaibles are class level variables and they can't be declared inside a method. If declared, the class will not compile.
+What is an Abstract Class and what is it's purpose?
+A Class which doesn't provide complete implementation is defined as an abstract class. Abstract classes enforce abstraction.
+Can a abstract class be declared final?
+Not possible. An abstract class without being inherited is of no use and hence will result in compile time error.
+What is use of a abstract variable?
+Variables can't be declared as abstract. only classes and methods can be declared as abstract.
+Can you create an object of an abstract class?
+Not possible. Abstract classes can't be instantiated.#
+Can a abstract class be defined without any abstract methods?
+Yes it's possible. This is basically to avoid instance creation of the class.
+Class C implements Interface I containing method m1 and m2 declarations. Class C has provided implementation for method m2. Can i create an object of Class C?
+No not possible. Class C should provide implementation for all the methods in the Interface I. Since Class C didn't provide implementation for m1 method, it has to be declared as abstract. Abstract classes can't be instantiated.
+Can a method inside a Interface be declared as final?
+No not possible. Doing so will result in compilation error. public and abstract are the only applicable modifiers for method declaration in an interface.
+Can an Interface implement another Interface?
+Intefaces doesn't provide implementation hence a interface cannot implement another interface.
+Can an Interface extend another Interface?
+Yes an Interface can inherit another Interface, for that matter an Interface can extend more than one Interface.
+Can a Class extend more than one Class?
+Not possible. A Class can extend only one class but can implement any number of Interfaces.
+Why is an Interface be able to extend more than one Interface but a Class can't extend more than one Class?
+Basically Java doesn't allow multiple inheritance, so a Class is restricted to extend only one Class. But an Interface is a pure abstraction model and doesn't have inheritance hierarchy like classes(do remember that the base class of all classes is Object). So an Interface is allowed to extend more than one Interface.
+Can an Interface be final?
+Not possible. Doing so so will result in compilation error.
+Can a class be defined inside an Interface?
+Yes it's possible.
+Can an Interface be defined inside a class?
+Yes it's possible.
+What is a Marker Interface?
+An Interface which doesn't have any declaration inside but still enforces a mechanism.
+Which object oriented Concept is achieved by using overloading and overriding?
+Polymorphism.
+Why does Java not support operator overloading?
+Operator overloading makes the code very difficult to read and maintain. To maintain code simplicity, Java doesn't support operator overloading.
+Can we define private and protected modifiers for variables in interfaces?
+No.
+What is Externalizable?
+Externalizable is an Interface that extends Serializable Interface. And sends data into Streams in Compressed Format. It has two methods, writeExternal(ObjectOuput out) and readExternal(ObjectInput in)
+What modifiers are allowed for methods in an Interface?
+Only public and abstract modifiers are allowed for methods in interfaces.
+What is a local, member and a class variable?
+Variables declared within a method are "local" variables.
+
+Variables declared within the class i.e not within any methods are "member" variables (global variables).
+
+Variables declared within the class i.e not within any methods and are defined as "static" are class variables.
+
+What is an abstract method?
+An abstract method is a method whose implementation is deferred to a subclass.
+What value does read() return when it has reached the end of a file?
+The read() method returns -1 when it has reached the end of a file.
+Can a Byte object be cast to a double value?
+No, an object cannot be cast to a primitive value.
+What is the difference between a static and a non-static inner class?
+A non-static inner class may have object instances that are associated with instances of the class's outer class. A static inner class does not have any object instances.
+What is an object's lock and which object's have locks?
+An object's lock is a mechanism that is used by multiple threads to obtain synchronized access to the object. A thread may execute a synchronized method of an object only after it has acquired the object's lock. All objects and classes have locks. A class's lock is acquired on the class's Class object.
+What is the % operator?
+It is referred to as the modulo or remainder operator. It returns the remainder of dividing the first operand by the second operand.
+When can an object reference be cast to an interface reference?
+An object reference be cast to an interface reference when the object implements the referenced interface.
+Which class is extended by all other classes?
+The Object class is extended by all other classes.
+Which non-Unicode letter characters may be used as the first character of an identifier?
+The non-Unicode letter characters $ and _ may appear as the first character of an identifier
+What restrictions are placed on method overloading?
+Two methods may not have the same name and argument list but different return types.
+What is casting?
+There are two types of casting, casting between primitive numeric types and casting between object references. Casting between numeric types is used to convert larger values, such as double values, to smaller values, such as byte values. Casting between object references is used to refer to an object by a compatible class, interface, or array type reference.
+What is the return type of a program's main() method?
+void.
+If a variable is declared as private, where may the variable be accessed?
+A private variable may only be accessed within the class in which it is declared.
+What do you understand by private, protected and public?
+These are accessibility modifiers. Private is the most restrictive, while public is the least restrictive. There is no real difference between protected and the default type (also known as package protected) within the context of the same package, however the protected keyword allows visibility to a derived class in a different package.
+What is Downcasting ?
+Downcasting is the casting from a general to a more specific type, i.e. casting down the hierarchy
+What modifiers may be used with an inner class that is a member of an outer class?
+A (non-local) inner class may be declared as public, protected, private, static, final, or abstract.
+How many bits are used to represent Unicode, ASCII, UTF-16, and UTF-8 characters?
+Unicode requires 16 bits and ASCII require 7 bits Although the ASCII character set uses only 7 bits, it is usually represented as 8 bits.
+
+UTF-8 represents characters using 8, 16, and 18 bit patterns.
+
+UTF-16 uses 16-bit and larger bit patterns.
+
+What restrictions are placed on the location of a package statement within a source code file?
+A package statement must appear as the first line in a source code file (excluding blank lines and comments).
+What is a native method?
+A native method is a method that is implemented in a language other than Java.
+What are order of precedence and associativity, and how are they used?
+Order of precedence determines the order in which operators are evaluated in expressions. Associatity determines whether an expression is evaluated left-to-right or right-to-left.
+Can an anonymous class be declared as implementing an interface and extending a class?
+An anonymous class may implement an interface or extend a superclass, but may not be declared to do both.
+What is the range of the char type?
+The range of the char type is 0 to 216 - 1 (i.e. 0 to 65535.)
+What is the range of the short type?
+The range of the short type is -(215) to 215 - 1. (i.e. -32,768 to 32,767)
+Why isn't there operator overloading?
+Because C++ has proven by example that operator overloading makes code almost impossible to maintain.
+What does it mean that a method or field is "static"?
+Static variables and methods are instantiated only once per class. In other words they are class variables, not instance variables. If you change the value of a static variable in a particular object, the value of that variable changes for all instances of that class. Static methods can be referenced with the name of the class rather than the name of a particular object of the class (though that works too). That's how library methods like System.out.println() work. out is a static field in the java.lang.System class.
+Is null a keyword?
+The null value is not a keyword.
+Which characters may be used as the second character of an identifier, but not as the first character of an identifier?
+The digits 0 through 9 may not be used as the first character of an identifier but they may be used after the first character of an identifier.
+Is the ternary operator written x : y ? z or x ? y : z ?
+It is written x ? y : z.
+How is rounding performed under integer division?
+The fractional part of the result is truncated. This is known as rounding toward zero.
+If a class is declared without any access modifiers, where may the class be accessed?
+A class that is declared without any access modifiers is said to have package access. This means that the class can only be accessed by other classes and interfaces that are defined within the same package.
+Does a class inherit the constructors of its superclass?
+A class does not inherit constructors from any of its superclasses.
+Name the eight primitive Java types.
+The eight primitive types are byte, char, short, int, long, float, double, and boolean.
+What restrictions are placed on the values of each case of a switch statement?
+During compilation, the values of each case of a switch statement must evaluate to a value that can be promoted to an int value.
+What is the difference between a while statement and a do while statement?
+A while statement checks at the beginning of a loop to see whether the next loop iteration should occur. A do while statement checks at the end of a loop to see whether the next iteration of a loop should occur. The do whilestatement will always execute the body of a loop at least once.
+What modifiers can be used with a local inner class?
+A local inner class may be final or abstract.
+When does the compiler supply a default constructor for a class?
+The compiler supplies a default constructor for a class if no other constructors are provided.
+If a method is declared as protected, where may the method be accessed?
+A protected method may only be accessed by classes or interfaces of the same package or by subclasses of the class in which it is declared.
+What are the legal operands of the instanceof operator?
+The left operand is an object reference or null value and the right operand is a class, interface, or array type.
+Are true and false keywords?
+The values true and false are not keywords.
+What happens when you add a double value to a String?
+The result is a String object.
+What is the diffrence between inner class and nested class?
+When a class is defined within a scope od another class, then it becomes inner class. If the access modifier of the inner class is static, then it becomes nested class.
+Can an abstract class be final?
+An abstract class may not be declared as final.
+What is numeric promotion?
+Numeric promotion is the conversion of a smaller numeric type to a larger numeric type, so that integer and floating-point operations may take place. In numerical promotion, byte, char, and short values are converted to int values. The int values are also converted to long values, if necessary. The long and float values are converted to double values, as required.
